@@ -3,12 +3,19 @@ export type AuthData = {
   password: string;
 };
 
+export type State =
+  | 'STARTED'
+  | 'SUBMITTED'
+  | 'OPERATION_SUCCESSFUL'
+  | 'OPERATION_FAILED';
+
 export type AuthModuleState = {
   email: string;
   password: string;
 
   error: string | undefined;
-  loading: boolean;
+
+  state: State;
 };
 
 export type AuthRootState = {

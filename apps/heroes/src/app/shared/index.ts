@@ -1,6 +1,6 @@
 import Button from './Button';
 import Link from './Link';
 import Spacer from './Spacer';
-import TextField, { TextFieldProps } from './TextField';
+import TextField from './TextField';
 
-export { Button, Link, Spacer, TextField, TextFieldProps };
+export { Button, Link, Spacer, TextField };

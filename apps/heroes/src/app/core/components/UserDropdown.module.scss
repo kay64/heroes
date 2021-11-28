@@ -1,0 +1,33 @@
+.gravatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popper {
+  background: white;
+  border: 1px solid #cccccc;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+}
+
+.container {
+  > p {
+    margin: 16px 16px 4px;
+  }
+  > button {
+    width: 100%;
+    margin: 4px 0 8px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 8px 16px;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    &:hover {
+      background: #F1C40F;
+    }
+  }
+}

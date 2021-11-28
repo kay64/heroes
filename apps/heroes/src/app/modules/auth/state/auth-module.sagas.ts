@@ -14,11 +14,11 @@ function* loginSubmittedSaga(action: ReturnType<typeof loginSubmitted>) {
   const { payload: data } = action;
 
   try {
-    const token: string = yield call(authApi.login, data);
+    const response: { token: string } = yield call(authApi.login, data);
     yield put(
       userAuthenticated({
         email: data.email,
-        token,
+        token: response.token,
       }),
     );
   } catch (e) {

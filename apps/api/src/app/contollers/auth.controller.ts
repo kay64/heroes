@@ -8,6 +8,7 @@ const authController = new KoaRouter<void, AppCtx>()
     const body = ctx.request.body as UserData;
     const token = await ctx.services.auth.login(body.email, body.password);
 
+    console.log('--->', body);
     if (token) {
       ctx.response.status = 200;
       ctx.response.body = { token };

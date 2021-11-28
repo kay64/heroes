@@ -1,18 +1,20 @@
-import React from 'react';
-
-import { Outlet } from 'react-router-dom';
+import React, { ReactElement } from 'react';
 
 import classes from './Layout.module.scss';
-import Navigation from './Navigation';
 
-const Layout: React.FC = () => {
+export type LayoutProps = {
+  header: ReactElement;
+  content: ReactElement;
+};
+
+const Layout: React.FC<LayoutProps> = (props) => {
+  const { header, content } = props;
+
   return (
     <div className={classes.root}>
-      <Navigation />
+      {header}
       <div className={classes.body}>
-        <div className={classes.container}>
-          <Outlet />
-        </div>
+        <div className={classes.container}>{content}</div>
       </div>
     </div>
   );

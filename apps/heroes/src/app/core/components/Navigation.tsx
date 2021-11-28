@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-import { Link } from 'react-router-dom';
-
-import { Spacer } from '../../shared';
+import { Link, Spacer } from '../../shared';
 import classes from './Navigation.module.scss';
 import NavigationLink from './NavigationLink';
 
-const Navigation: React.FC = () => {
+export type NavigationProps = {
+  actions: ReactElement;
+};
+
+const Navigation: React.FC<NavigationProps> = (props) => {
+  const { actions } = props;
+
   return (
     <div className={classes.root}>
       <nav className={classes.nav}>
@@ -16,9 +20,7 @@ const Navigation: React.FC = () => {
         <NavigationLink to="/heroes">Heroes</NavigationLink>
         <NavigationLink to="/villains">Villains</NavigationLink>
         <Spacer />
-        <Link to="/auth/login" className={classes.navItem}>
-          Log In
-        </Link>
+        {actions}
       </nav>
     </div>
   );

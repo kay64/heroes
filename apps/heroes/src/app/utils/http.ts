@@ -1,3 +1,5 @@
+import { ServerError } from '@heroes/api-interfaces';
+
 type HttpResponse<T> = {
   status: number;
   headers: Record<string, string>;
@@ -18,8 +20,20 @@ type HttpClient = {
     headers?: Record<string, string>,
   ) => Promise<HttpResponse<Out>>;
 
-  updateToken: (token: string) => void;
+  updateToken: (token: string | undefined) => void;
 };
+
+class HttpError extends Error {
+  constructor(
+    public status: number,
+    public timestamp: string,
+    message: string,
+  ) {
+    super(message);
+  }
+}
+
+const successfulStatuses = new Set([200, 201, 204]);
 
 const createFetchHeaders = (
   headers?: Record<string, string>,
@@ -27,6 +41,7 @@ const createFetchHeaders = (
 ): Headers => {
   const fetchHeaders = new Headers();
 
+  fetchHeaders.set('Content-Type', 'application/json');
   if (headers) {
     Object.entries(headers).forEach(([name, value]) =>
       fetchHeaders.set(name, value),
@@ -54,6 +69,16 @@ const parseResponse = async <Out>(
     headers,
     body,
   };
+};
+
+const createHttpError = async (response: Response): Promise<HttpError> => {
+  const httpResponse = await parseResponse<ServerError>(response);
+
+  return new HttpError(
+    httpResponse.status,
+    httpResponse.body.timestamp,
+    httpResponse.body.message,
+  );
 };
 
 const createHttpClient = (): HttpClient => {
@@ -90,6 +115,10 @@ const createHttpClient = (): HttpClient => {
         headers: createFetchHeaders(headers, withToken),
         body: JSON.stringify(body),
       });
+
+      if (!successfulStatuses.has(response.status)) {
+        throw await createHttpError(response);
+      }
 
       return parseResponse(response);
     },

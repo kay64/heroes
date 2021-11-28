@@ -1,10 +1,12 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, TextField } from '../../../shared';
 import Stack from '../components/Stack';
-import { loginSubmitted } from '../state/auth-module.actions';
+import { loginCompleted, loginSubmitted } from '../state/auth-module.actions';
+import { getAuthState } from '../state/auth-module.selectors';
 import {
   initialState,
   passwordChanged,
@@ -14,7 +16,18 @@ import {
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
+  const authState = useSelector(getAuthState);
   const [state, localDispatch] = useReducer(reducer, initialState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authState === 'OPERATION_SUCCESSFUL') {
+      navigate('/');
+      dispatch(loginCompleted());
+    }
+  }, [authState, navigate, dispatch]);
+
+  const loading = authState === 'SUBMITTED';
 
   const handleSubmit = () => {
     dispatch(
@@ -39,7 +52,12 @@ const LoginForm: React.FC = () => {
         value={state.password}
         onChange={(value) => localDispatch(passwordChanged(value))}
       />
-      <Button label="Log In" onClick={handleSubmit} />
+      <Button
+        label="Log In"
+        onClick={handleSubmit}
+        loading={loading}
+        disabled={loading}
+      />
     </Stack>
   );
 };

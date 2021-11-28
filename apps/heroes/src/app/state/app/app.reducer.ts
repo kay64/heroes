@@ -1,6 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { appStarted, userAuthenticated } from './app.actions';
+import {
+  appStarted,
+  userAuthenticated,
+  userUnauthenticated,
+} from './app.actions';
 import { AppState } from './app.types';
 
 const appReducer = createReducer<AppState>(
@@ -15,6 +19,10 @@ const appReducer = createReducer<AppState>(
         ...state,
         state: 'INITIALIZED',
         user: payload,
+      }))
+      .addCase(userUnauthenticated, (state) => ({
+        ...state,
+        user: undefined,
       })),
 );
 

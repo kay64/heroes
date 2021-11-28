@@ -6,7 +6,13 @@ export const loginSubmitted = createAction<AuthData, 'auth/LOGIN_SUBMITTED'>(
   'auth/LOGIN_SUBMITTED',
 );
 
-export const loginFailed = createAction<string>('auth/LOGIN_FAILED');
+export const loginFailed = createAction<string, 'auth/LOGIN_FAILED'>(
+  'auth/LOGIN_FAILED',
+);
+
+export const loginCompleted = createAction<void, 'auth/LOGIN_COMPLETED'>(
+  'auth/LOGIN_COMPLETED',
+);
 
 export const registrationSubmitted = createAction<
   AuthData,
