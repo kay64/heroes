@@ -1,0 +1,28 @@
+{
+  "root": "apps/heroes-e2e",
+  "sourceRoot": "apps/heroes-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/heroes-e2e/cypress.json",
+        "devServerTarget": "heroes:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "heroes:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/heroes-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["heroes"]
+}

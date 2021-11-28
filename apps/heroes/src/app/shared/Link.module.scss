@@ -1,0 +1,18 @@
+.base {
+  color: #18191C;
+  text-decoration: none;
+
+  &.underlined {
+    text-decoration: underline;
+  }
+
+  &.sizeSmall {
+    font-size: 14px;
+  }
+
+  &.sizeMedium {
+    font-size: 16px;
+  }
+}
+
+

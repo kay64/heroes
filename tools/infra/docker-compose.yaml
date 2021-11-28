@@ -1,0 +1,21 @@
+---
+
+networks:
+  main:
+
+volumes:
+  postgres:
+
+services:
+  postgres:
+    image: postgres:14.1
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_PASSWORD=local
+      - POSTGRES_USER=local
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - main

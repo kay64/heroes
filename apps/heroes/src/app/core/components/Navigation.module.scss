@@ -1,0 +1,40 @@
+.root {
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  > .nav {
+    color: #18191C;
+    width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+
+    .navItem {
+
+    }
+
+    .selected {
+    }
+
+    .brand {
+      font-weight: 700;
+      margin-right: 48px;
+      cursor: pointer;
+      color: #F39C12;
+      text-decoration: none;
+    }
+
+  }
+
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+}

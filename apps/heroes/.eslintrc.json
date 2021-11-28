@@ -1,0 +1,78 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "extends": [
+        "eslint:recommended",
+        "airbnb/hooks"
+      ],
+      "plugins": [
+        "prettier",
+        "react",
+        "jsx-a11y",
+        "import"
+      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "import/order": [
+          "error",
+          {
+            "groups": ["builtin", "external", "internal"],
+            "pathGroups": [
+              {
+                "pattern": "react",
+                "group": "external",
+                "position": "before"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["react"],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ],
+        "linebreak-style": "off",
+        "max-len": [
+          "error",
+          {
+            "code": 80,
+            "ignorePattern": "^import\\W.*"
+          }
+        ],
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    },
+    {
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "airbnb-typescript"
+      ],
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"],
+        "@typescript-eslint/indent": "off"
+      },
+      "parserOptions": {
+        "project": "./apps/heroes/tsconfig.*?.json"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
+}

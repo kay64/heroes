@@ -1,0 +1,15 @@
+POST http://localhost:3333/api/heroes
+Content-Type: application/json
+
+{
+  "name": "Green Arrow"
+}
+
+###
+GET http://localhost:3333/api/heroes
+Accept: application/json
+
+###
+
+GET http://localhost:3333/api/heroes/1
+Accept: application/json

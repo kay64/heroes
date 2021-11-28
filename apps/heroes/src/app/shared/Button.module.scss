@@ -1,0 +1,22 @@
+.base {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 14px;
+  text-decoration: none;
+  color: #18191C;
+  background: #E4E4E5;
+    border-color: #E4E4E5;
+  border-width: 1px;
+  border-style: solid;
+  outline: 0;
+
+  &:hover {
+    background: #e9e9ea;
+  }
+
+  &:active {
+    background: #cdcdce;
+  }
+}
