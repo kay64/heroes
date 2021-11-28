@@ -1,3 +1,2 @@
-import { HeroInput, HeroInfoOutput, HeroOutput } from './heroes.dto';
-
-export { HeroInput, HeroInfoOutput, HeroOutput };
+export * from './heroes.dto';
+export * from './users.dto';

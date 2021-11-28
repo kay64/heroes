@@ -12,7 +12,6 @@
         "index": "apps/heroes/src/index.html",
         "baseHref": "/",
         "main": "apps/heroes/src/main.tsx",
-        "polyfills": "apps/heroes/src/polyfills.ts",
         "tsConfig": "apps/heroes/tsconfig.app.json",
         "assets": ["apps/heroes/src/favicon.ico", "apps/heroes/src/assets"],
         "styles": ["apps/heroes/src/styles.scss"],
@@ -32,7 +31,7 @@
           "sourceMap": false,
           "namedChunks": false,
           "extractLicenses": true,
-          "vendorChunk": false
+          "vendorChunk": true
         }
       }
     },

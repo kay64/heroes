@@ -2,7 +2,7 @@ import { HeroInfoOutput, HeroInput, HeroOutput } from '../dto';
 import { Pagination } from '../types';
 import { Pool } from 'pg';
 
-const createHeroAccessor = (db: Pool) => {
+const createHeroesAccessor = (db: Pool) => {
   const getAll = async (pagination: Pagination): Promise<HeroInfoOutput[]> => {
     const result = await db.query<HeroInfoOutput>(
       'select id, name from heroes where deleted_at is null offset $1 limit $2',
@@ -76,4 +76,5 @@ const createHeroAccessor = (db: Pool) => {
     remove,
   };
 };
-export default createHeroAccessor;
+
+export default createHeroesAccessor;

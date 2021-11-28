@@ -1,5 +1,5 @@
-import heroesAccessor from './heroes.accessor';
+import createHeroesAccessor from './heroes.accessor';
+import createUsersAccessor from './users.accessor';
 
-export {
-  heroesAccessor,
-}
+export * from './types';
+export { createHeroesAccessor, createUsersAccessor };

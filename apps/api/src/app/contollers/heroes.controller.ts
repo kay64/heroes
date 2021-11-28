@@ -1,9 +1,9 @@
 import * as KoaRouter from 'koa-router';
 import { HeroInput } from '../db/dto';
 import { createError } from '../utils';
-import { Ctx } from '../types';
+import { AppCtx } from '../types';
 
-const heroesController = new KoaRouter<void, Ctx>()
+const heroesController = new KoaRouter<void, AppCtx>()
   .get('/:id', async (ctx) => {
     const id = Number(ctx.params['id']);
     if (!id) {

@@ -6,7 +6,6 @@ const errorHandling = () => {
     try {
       await next();
     } catch (e) {
-      console.error(e);
       const error = createError(e.message);
       ctx.response.status = 500;
       ctx.response.body = error;

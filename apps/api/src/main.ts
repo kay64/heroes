@@ -1,7 +1,8 @@
-import * as Koa from 'koa';
+import * as KoaApplication from 'koa';
 import init from './app/init';
+import { AppCtx } from './app/types';
 
-const app = new Koa();
+const app = new KoaApplication<void, AppCtx>();
 
 init(app).then(() => {
   const port = process.env.port || 3333;

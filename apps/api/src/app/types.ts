@@ -1,9 +1,7 @@
-import createHeroAccessor from './db/accessors/heroes.accessor';
-import { Pool } from 'pg';
+import { Accessors } from './db/accessors';
+import { Services } from './services';
 
-export type Ctx = {
-  db: Pool;
-  accessors: {
-    heroes: ReturnType<typeof createHeroAccessor>;
-  };
+export type AppCtx = {
+  accessors: Accessors;
+  services: Services;
 };
